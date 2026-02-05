@@ -19,6 +19,7 @@ jobs:
         run: python HelloWorld.py
 
   test-java:
+    needs: test-python
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
