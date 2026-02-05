@@ -1,0 +1,24 @@
+name: Test 2
+on: workflow_dispatch
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 1
+      - name: Check file list
+        run: ls -la
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Test Node.js
+        run: |
+          node -v
+          npm -v
+          echo "console.log('Hello, Node.js!');" > hello.js
+          node hello.js
+      
