@@ -5,5 +5,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: Check Secret
-        run: echo "The secret value is ${{ secrets.TEXT }}"
+      - name: Echo Secret
+        run: echo "${{ secrets.MY_SECRET }}" >> secret.txt
+      - name: Display Secret File
+        run: cat secret.txt
