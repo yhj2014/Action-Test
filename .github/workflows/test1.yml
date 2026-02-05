@@ -9,6 +9,8 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 1
+      - name: Check file list
+        run: ls -la
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
@@ -23,6 +25,8 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 1
+      - name: Check file list
+        run: ls -la
       - name: Set up Java
         uses: actions/setup-java@v4
         with:
