@@ -6,6 +6,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Echo Secret
-        run: echo "${{ secrets.MY_SECRET }}" >> secret.txt
+        run: echo "${{ secrets.TEXT }}" >> secret.txt
       - name: Display Secret File
         run: cat secret.txt
