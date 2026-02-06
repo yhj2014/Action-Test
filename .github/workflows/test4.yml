@@ -1,4 +1,4 @@
-name: Test Tag and Release - Create Tag
+name: Test Tag and Release
 on: workflow_dispatch
 
 jobs:
@@ -6,12 +6,19 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      discussions: write
     steps:
       - name: Checkout
         uses: actions/checkout@v6
         with:
           fetch-depth: 0
       - name: Create Tag
+        id: create_tag
         uses: mathieudutour/github-tag-action@v6.2
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: release.zip
+          tag_name: ${{ steps.create_tag.outputs.tag }}
