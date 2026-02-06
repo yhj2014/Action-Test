@@ -21,4 +21,4 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           files: release.zip
-          tag_name: ${{ steps.create_tag.outputs.tag }}
+          tag_name: ${{ steps.create_tag.outputs.new_tag }}
