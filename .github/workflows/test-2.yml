@@ -1,0 +1,21 @@
+name: Test Tag and Release - Release
+on:
+  push:
+    tags:
+      - 'v*'
+jobs:
+  Release:
+    runs-on: ubuntu-latest
+    permissions:
+        contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - name: Craete Zip
+        run: zip -r release.zip . -x ".*" -x "*/.*" -x ".github/*"
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: release.zip
